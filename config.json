@@ -1,0 +1,4 @@
+{
+  "/metrics_black": "http://black-box:5001/metrics",
+  "/metrics_green": "http://green-box:9100/metrics"
+}
