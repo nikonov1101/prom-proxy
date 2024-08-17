@@ -1,0 +1,21 @@
+prom-proxy
+=========
+
+The simpliest possible http proxy. Must be deployed at the network edge, 
+and forward scrapper's request inside the network.
+
+Then, configure you scrapper to get metrics from a single node,
+but different URLs (note that target is the same):
+
+- job_name: "service-1"
+  metrics_path: "/metrics_1"
+  static_configs:
+    - targets:
+      - "prom-proxy:5001"
+
+- job_name: "service-2"
+  metrics_path: "/metrics_2"
+  static_configs:
+    - targets:
+      - "prom-proxy:5001"
+
