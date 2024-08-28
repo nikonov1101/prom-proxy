@@ -1,0 +1,19 @@
+# /etc/systemd/system/prom-proxy.service
+[Unit]
+Description=Prom proxy
+After=syslog.target
+After=network.target
+
+[Service]
+RestartSec=10s
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/prom-proxy
+ExecStart=/root/prom-proxy/prom-proxy -http=":5000"
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
